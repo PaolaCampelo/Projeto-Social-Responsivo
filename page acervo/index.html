@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estante Viva - Catálogo</title>
+    <meta name="description" content="Biblioteca Escolar da EEEP José de Barcelos">
+    
+    <!-- Fontes Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="acervo.css">
+</head>
+<body>
+    <!-- Barra de gradiente -->
+    <div class="gradient-bar"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <img 
+                        id="logo-oficial" 
+                        src="Imgs/LOGO ESTANTE VIVA (V).png" 
+                        alt="Estante Viva" 
+                        class="logo-img"
+                        title="Voltar ao inicio"
+                        onclick="window.location.href='../index.html'"
+                    />
+                </div>
+
+                <!-- Navegação Desktop -->
+              <nav class="nav desktop-nav">
+                    <a href="../index.html#populares" class="nav-link">
+                        Populares
+                        <span class="nav-underline"></span>
+                    </a>
+                    <a href="../index.html#recomendados" class="nav-link">
+                        Recomendados
+                        <span class="nav-underline"></span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        Catálogo
+                        <span class="nav-underline"></span>
+                    </a>
+
+
+                    <div class="profile-selector">
+                        <svg class="user-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <span>Aluno</span>
+                    </div>
+                </nav>
+
+                <!-- Botão Menu Mobile -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg class="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" x2="20" y1="6" y2="6"/>
+                        <line x1="4" x2="20" y1="12" y2="12"/>
+                        <line x1="4" x2="20" y1="18" y2="18"/>
+                    </svg>
+                    <svg class="close-icon hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m18 6-12 12"/>
+                        <path d="m6 6 12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menu Mobile -->
+            <div class="mobile-menu hidden">
+                <nav class="mobile-nav">
+                    <button class="mobile-nav-link" onclick="scrollToSection('populares')">
+                        Populares
+                    </button>
+                    <button class="mobile-nav-link" onclick="scrollToSection('')">
+                        Recomendados
+                    </button>
+                    <button class="mobile-nav-link" onclick="scrollToSection('catalogo')">
+                        Catálogo
+                    </button>
+                    
+                    <div class="profile-selector mobile-profile">
+                        <svg class="user-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <span>Aluno</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <div class="central-container">
+            <h1 class="main-title">
+                📚 Pesquise, descubra,<br />
+                mergulhe na <span class="highlight">história</span>...
+            </h1>
+
+            <!-- Container de Busca -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Buscar por título, autor, gênero ou ano..."
+                        class="search-input"
+                    />
+                    <button id="searchButton" class="search-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                        Pesquisar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resultados da Busca -->
+            <div id="resultsContainer" class="results-container hidden"></div>
+
+            <!-- Imagem de fundo quando não há busca -->
+            <div id="defaultImage" class="default-image">
+                <img src="Imgs/livros.png" class="livros-fundo-img">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Contato -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Contato</h3>
+                    <div class="footer-info">
+                        <p>(85) 3101-2163</p>
+                        <p>Horário de Funcionamento:</p>
+                        <p>Segunda à Sexta 07:00 - 16:40</p>
+                        <p>Endereço: Rua Angélica Gurgel, 369 - Fortaleza, CE</p>
+                    </div>
+                </div>
+
+                <!-- Realização -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Realização</h3>
+                    <div class="footer-logos">
+                        <div class="footer-logo">
+                            <img class="logo-placeholder eeep" src="Imgs/logo-escola.png" alt="Logo Escola">
+                        </div>
+                        <div class="footer-logoo">
+                            <img class="logo-placeholderr eeep" src="Imgs/logo-estado.png" alt="Logo Estado">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Receba Nossas Novidades</h3>
+                    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                        <input type="email" placeholder="Digite seu email" required class="newsletter-input">
+                        <button type="submit" class="newsletter-btn">Cadastrar</button>
+                    </form>
+                </div>
+
+                <!-- Localização -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Localização</h3>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12731.331599204255!2d-38.5021008!3d-3.835977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c751d4bc75b055%3A0xdd1f68422919cd8d!2sEEEP%20Jos%C3%A9%20de%20Barcelos!5e0!3m2!1spt-BR!2sbr!4v1681145796784"
+                            width="100%"
+                            height="100%"
+                            style="border: 0;"
+                            allowfullscreen
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Localização EEEP José de Barcelos">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 <strong>Multimeios José de Barcelos</strong> Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="acervo.js"></script>
+</body>
+</html>
